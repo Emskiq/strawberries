@@ -1,0 +1,49 @@
+k = int(input())
+l = int(input())
+r = int(input())
+arr = [[0 for i in range(l)] for j in range(k)]
+
+first_strawberry = input()
+second_strawberry = input()
+
+spoiled1_row, spoiled1_column = first_strawberry.split()
+spoiled1_row = int(spoiled1_row)
+spoiled1_column = int(spoiled1_column)
+
+if second_strawberry != "":
+    spoiled2_row, spoiled2_column = second_strawberry.split()
+    spoiled2_row = int(spoiled2_row)
+    spoiled2_column = int(spoiled2_column)
+else:
+    spoiled2_row = spoiled1_row
+    spoiled2_column = spoiled1_column
+
+
+arr[spoiled1_row][spoiled1_column] = 1;
+arr[spoiled2_row][spoiled2_column] = 1;
+
+for days in range(1, r+2):
+    for row in arr:
+        print(row)
+    print()
+
+    for i in range(0, len(arr)):
+        for j in range(0, len(arr[i])):
+            if arr[i][j] == days:
+                if i>0:
+                    arr[i-1][j] = days+1
+                if i<len(arr) - 1:
+                    arr[i+1][j] = days+1
+                if j>0:
+                    arr[i][j-1] = days+1
+                if j<len(arr[i]) - 1:
+                    arr[i][j+1] = days+1
+
+sum = 0           
+for i in range(0, len(arr)):
+    for j in range(0, len(arr[i])):
+        if (arr[i][j] == 0):
+            sum+=1
+    
+
+print(sum)
