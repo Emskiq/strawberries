@@ -34,16 +34,16 @@ for days in range(1, r+1):
         for j in range(0, len(arr[i])):
             if arr[i][j] == days:
                 if i>0:
-                    if arr[i-1][j] < days:
+                    if arr[i-1][j] == 0:
                         arr[i-1][j] = days+1
                 if i<len(arr) - 1:
-                    if arr[i+1][j] < days:
+                    if arr[i+1][j] == 0:
                         arr[i+1][j] = days+1
                 if j>0:
-                    if arr[i][j-1] < days:
+                    if arr[i][j-1] == 0:
                         arr[i][j-1] = days+1
                 if j<len(arr[i]) - 1:
-                    if arr[i][j+1] < days:
+                    if arr[i][j+1] == 0:
                         arr[i][j+1] = days+1
     for row in arr:
         print(row)
